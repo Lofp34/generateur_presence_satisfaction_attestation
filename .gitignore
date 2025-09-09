@@ -1,0 +1,11 @@
+# Environnement virtuel
+venv/
+
+# Fichiers de cache Python
+__pycache__/
+*.pyc
+
+# Fichiers PDF générés
+feuilles_présence/
+.feuilles_présence/
+*.pdf
