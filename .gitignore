@@ -9,3 +9,6 @@ __pycache__/
 feuilles_présence/
 .feuilles_présence/
 *.pdf
+
+# macOS
+.DS_Store
