@@ -1,14 +1,42 @@
-# Environnement virtuel
+# Environnement virtuel Python
 venv/
+env/
+ENV/
 
-# Fichiers de cache Python
+# Fichiers Python compilés
 __pycache__/
-*.pyc
+*.py[cod]
+*$py.class
+*.so
 
-# Fichiers PDF générés
-feuilles_présence/
-.feuilles_présence/
-*.pdf
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
 
-# macOS
+# Fichiers IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
 .DS_Store
+Thumbs.db
+
+# Sorties PDF
+feuilles_présence/
