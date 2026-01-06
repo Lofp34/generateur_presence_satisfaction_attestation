@@ -182,6 +182,23 @@ def _normalize_dates(raw_dates: list[str]) -> list[str]:
     return normalized
 
 
+def _select_date_bounds(dates_list: list[str]) -> tuple[str, str]:
+    first = ""
+    last = ""
+    for value in dates_list:
+        parsed = _parse_date(value)
+        if parsed:
+            formatted = parsed.strftime("%d/%m/%Y")
+            if not first:
+                first = formatted
+            last = formatted
+        else:
+            if not first:
+                first = value
+            last = value
+    return first, last
+
+
 def _collect_missing(
     societe: str,
     participants: list[str],
@@ -298,14 +315,7 @@ if submitted:
             settings = get_settings()
             attestation_layout = settings.attestation_layout
 
-            parsed_dates = [d for d in (_parse_date(date) for date in dates_list) if d]
-            parsed_dates.sort()
-            questionnaire_start = (
-                parsed_dates[0].strftime("%d/%m/%Y") if parsed_dates else ""
-            )
-            questionnaire_end = (
-                parsed_dates[-1].strftime("%d/%m/%Y") if parsed_dates else ""
-            )
+            questionnaire_start, questionnaire_end = _select_date_bounds(dates_list)
             attestation_start = questionnaire_start or (dates_list[0] if dates_list else "")
             attestation_end = questionnaire_end or (dates_list[-1] if dates_list else "")
 
