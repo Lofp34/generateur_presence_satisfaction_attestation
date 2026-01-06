@@ -1,0 +1,10 @@
+venv/
+.venv/
+__pycache__/
+.pytest_cache/
+feuilles_présence/
+generateur_questionnaire/questionnaires_satisfaction/
+attestations_formation/certificats_output/
+attestations_formation/tests/
+generateur_questionnaire/tests/
+streamlit_app.py

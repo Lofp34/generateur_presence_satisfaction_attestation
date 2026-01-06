@@ -56,6 +56,7 @@ Saisissez ensuite :
 ### Interface web (Streamlit)
 ```bash
 source venv/bin/activate
+pip install -r requirements-local.txt
 streamlit run streamlit_app.py
 ```
 Ouvrez le lien local affiché (par défaut `http://localhost:8501`), remplissez le formulaire et cliquez sur **Générer les feuilles** puis **Télécharger le ZIP** pour récupérer toutes les feuilles.
