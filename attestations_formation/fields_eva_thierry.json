@@ -1,0 +1,244 @@
+{
+  "pages": [
+    {
+      "page_number": 1,
+      "image_width": 707,
+      "image_height": 1000
+    }
+  ],
+  "form_fields": [
+    {
+      "page_number": 1,
+      "description": "Nom et prénom du signataire",
+      "field_label": "Je soussigné(e) (prénom et nom)",
+      "label_bounding_box": [
+        85,
+        268,
+        200,
+        287
+      ],
+      "entry_bounding_box": [
+        210,
+        268,
+        610,
+        287
+      ],
+      "entry_text": {
+        "text": "Laurent Serre",
+        "font_size": 12
+      }
+    },
+    {
+      "page_number": 1,
+      "description": "Raison sociale du dispensateur",
+      "field_label": "représentant légal du dispensateur",
+      "label_bounding_box": [
+        85,
+        294,
+        622,
+        308
+      ],
+      "entry_bounding_box": [
+        350,
+        312,
+        622,
+        332
+      ],
+      "entry_text": {
+        "text": "Laurent Serre Développement",
+        "font_size": 12
+      }
+    },
+    {
+      "page_number": 1,
+      "description": "Nom et prénom du bénéficiaire",
+      "field_label": "nom et prénom du bénéficiaire",
+      "label_bounding_box": [
+        85,
+        392,
+        240,
+        410
+      ],
+      "entry_bounding_box": [
+        250,
+        392,
+        620,
+        410
+      ],
+      "entry_text": {
+        "text": "Eva Thierry",
+        "font_size": 12
+      }
+    },
+    {
+      "page_number": 1,
+      "description": "Raison sociale de l'entreprise",
+      "field_label": "salarié(e) de l'entreprise",
+      "label_bounding_box": [
+        85,
+        412,
+        250,
+        430
+      ],
+      "entry_bounding_box": [
+        260,
+        412,
+        620,
+        430
+      ],
+      "entry_text": {
+        "text": "Mon Coach Brico",
+        "font_size": 12
+      }
+    },
+    {
+      "page_number": 1,
+      "description": "Intitulé de l'action",
+      "field_label": "a suivi l'action (intitulé)",
+      "label_bounding_box": [
+        85,
+        438,
+        210,
+        456
+      ],
+      "entry_bounding_box": [
+        220,
+        438,
+        620,
+        456
+      ],
+      "entry_text": {
+        "text": "Bootcamp Commercial",
+        "font_size": 12
+      }
+    },
+    {
+      "page_number": 1,
+      "description": "Case à cocher action de formation",
+      "field_label": "action de formation",
+      "label_bounding_box": [
+        120,
+        492,
+        260,
+        508
+      ],
+      "entry_bounding_box": [
+        94,
+        494,
+        112,
+        512
+      ],
+      "entry_text": {
+        "text": "X",
+        "font_size": 12
+      }
+    },
+    {
+      "page_number": 1,
+      "description": "Date de début",
+      "field_label": "du",
+      "label_bounding_box": [
+        120,
+        586,
+        135,
+        600
+      ],
+      "entry_bounding_box": [
+        150,
+        586,
+        310,
+        600
+      ],
+      "entry_text": {
+        "text": "10/12/2025",
+        "font_size": 12,
+        "y_offset": -2
+      }
+    },
+    {
+      "page_number": 1,
+      "description": "Date de fin",
+      "field_label": "au",
+      "label_bounding_box": [
+        330,
+        586,
+        345,
+        600
+      ],
+      "entry_bounding_box": [
+        360,
+        586,
+        500,
+        600
+      ],
+      "entry_text": {
+        "text": "19/12/2025",
+        "font_size": 12,
+        "y_offset": -2
+      }
+    },
+    {
+      "page_number": 1,
+      "description": "Durée",
+      "field_label": "pour une durée de",
+      "label_bounding_box": [
+        85,
+        610,
+        210,
+        626
+      ],
+      "entry_bounding_box": [
+        225,
+        610,
+        382,
+        626
+      ],
+      "entry_text": {
+        "text": "40 heures",
+        "font_size": 12
+      }
+    },
+    {
+      "page_number": 1,
+      "description": "Lieu",
+      "field_label": "Fait à",
+      "label_bounding_box": [
+        85,
+        758,
+        120,
+        774
+      ],
+      "entry_bounding_box": [
+        135,
+        758,
+        290,
+        774
+      ],
+      "entry_text": {
+        "text": "MONTPELLIER",
+        "font_size": 12
+      }
+    },
+    {
+      "page_number": 1,
+      "description": "Date de signature",
+      "field_label": "Le",
+      "label_bounding_box": [
+        85,
+        780,
+        110,
+        795
+      ],
+      "entry_bounding_box": [
+        125,
+        780,
+        270,
+        795
+      ],
+      "entry_text": {
+        "text": "19/12/2025",
+        "font_size": 12
+      }
+    }
+  ]
+}

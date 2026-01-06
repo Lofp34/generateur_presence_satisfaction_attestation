@@ -1,0 +1,132 @@
+{
+  "required": [
+    "signatory_name",
+    "provider_name",
+    "beneficiary_name",
+    "company_name",
+    "action_title",
+    "date_start",
+    "date_end",
+    "duration",
+    "location"
+  ],
+  "fields": {
+    "signatory_name": {
+      "labels": [
+        "Je soussigné",
+        "Soussigné",
+        "Représentant"
+      ],
+      "patterns": [
+        "Je\\s+soussigné\\(e\\)\\s*[:\\-]?\\s*(?P<value>[^\\n]+)",
+        "Soussigné\\s*[:\\-]?\\s*(?P<value>[^\\n]+)",
+        "représentée\\s+par\\s+(?P<value>[^\\n\\.]+)",
+        "représenté\\s+par\\s+(?P<value>[^\\n\\.]+)",
+        "representee\\s+par\\s+(?P<value>[^\\n\\.]+)",
+        "represente\\s+par\\s+(?P<value>[^\\n\\.]+)"
+      ]
+    },
+    "provider_name": {
+      "labels": [
+        "Dispensateur",
+        "Organisme de formation",
+        "Raison sociale du dispensateur"
+      ],
+      "patterns": [
+        "Raison\\s+sociale\\s+du\\s+dispensateur\\s*[:\\-]?\\s*(?P<value>[^\\n]+)",
+        "Organisme\\s+de\\s+formation\\s*[:\\-]?\\s*(?P<value>[^\\n]+)"
+      ]
+    },
+    "beneficiary_name": {
+      "labels": [
+        "Bénéficiaire",
+        "Nom du bénéficiaire",
+        "Nom et prénom du bénéficiaire"
+      ],
+      "patterns": [
+        "Nom\\s+et\\s+prénom\\s+du\\s+bénéficiaire\\s*[:\\-]?\\s*(?P<value>[^\\n]+)",
+        "Bénéficiaire\\s*[:\\-]?\\s*(?P<value>[^\\n]+)",
+        "Stagiaire\\s*[:\\-]?\\s*(?P<value>[^\\n]+)",
+        "Participant\\s*[:\\-]?\\s*(?P<value>[^\\n]+)",
+        "Représenté\\s+par\\s*(?P<value>[^\\n\\.]+)",
+        "Représenté\\s+par\\s*\\n\\s*(?P<value>[^\\n\\.]+)",
+        "Represent[eé]\\s+par\\s*(?P<value>[^\\n\\.]+)",
+        "Represent[eé]\\s+par\\s*\\n\\s*(?P<value>[^\\n\\.]+)"
+      ]
+    },
+    "company_name": {
+      "labels": [
+        "Entreprise",
+        "Raison sociale",
+        "Société"
+      ],
+      "patterns": [
+        "Raison\\s+sociale\\s*[:\\-]?\\s*(?P<value>[^\\n]+)",
+        "Entreprise\\s*[:\\-]?\\s*(?P<value>[^\\n]+)"
+      ]
+    },
+    "action_title": {
+      "labels": [
+        "Intitulé de l'action",
+        "Intitulé",
+        "Action"
+      ],
+      "patterns": [
+        "Intitulé\\s+de\\s+l'action\\s*[:\\-]?\\s*(?P<value>[^\\n]+)",
+        "Intitulé\\s*[:\\-]?\\s*(?P<value>[^\\n]+)"
+      ]
+    },
+    "date_start": {
+      "labels": [
+        "Date de début",
+        "Début",
+        "Du"
+      ],
+      "patterns": [
+        "Date\\s+de\\s+début\\s*[:\\-]?\\s*(?P<value>\\d{2}/\\d{2}/\\d{4})",
+        "Du\\s*(?P<value>\\d{2}/\\d{2}/\\d{4})"
+      ]
+    },
+    "date_end": {
+      "labels": [
+        "Date de fin",
+        "Fin",
+        "Au"
+      ],
+      "patterns": [
+        "Date\\s+de\\s+fin\\s*[:\\-]?\\s*(?P<value>\\d{2}/\\d{2}/\\d{4})",
+        "Au\\s*(?P<value>\\d{2}/\\d{2}/\\d{4})"
+      ]
+    },
+    "duration": {
+      "labels": [
+        "Durée",
+        "Durée totale"
+      ],
+      "patterns": [
+        "Durée\\s+totale\\s*[:\\-]?\\s*(?P<value>[^\\n]+)",
+        "Durée\\s*[:\\-]?\\s*(?P<value>[^\\n]+)"
+      ]
+    },
+    "location": {
+      "labels": [
+        "Lieu",
+        "Fait à"
+      ],
+      "patterns": [
+        "Fait\\s+à\\s*(?P<value>[^\\n]+)",
+        "Lieu\\s*[:\\-]?\\s*(?P<value>[^\\n]+)"
+      ]
+    },
+    "signature_date": {
+      "labels": [
+        "Le",
+        "Date de signature"
+      ],
+      "patterns": [
+        "Date\\s+de\\s+signature\\s*[:\\-]?\\s*(?P<value>\\d{2}/\\d{2}/\\d{4})",
+        "Le\\s*(?P<value>\\d{2}/\\d{2}/\\d{4})"
+      ]
+    }
+  }
+}

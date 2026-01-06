@@ -1,82 +1,84 @@
 # Générateur de Feuilles de Présence
 
 ## Description
-Ce programme génère automatiquement des feuilles de présence en PDF pour des formations. Il crée un document personnalisé pour chaque académicien avec toutes les informations nécessaires.
+Application Python permettant de générer automatiquement des feuilles de présence en PDF pour chaque académicien d’une formation. Le projet propose à la fois un script en ligne de commande et une interface web (Streamlit).
 
 ## Prérequis
-- Python 3.x
-- pip (gestionnaire de paquets Python)
+- Python 3.x installé sur la machine
+- `pip` disponible dans le PATH
 
-## Installation
+### Utilisation de la version Terminal (CLI)
 
-### Première utilisation
+1. Ouvrez un terminal dans le dossier du projet.
+2. Lancez le script directement :
+   ```bash ./lancer.sh
+   ```
+   *Note : Si vous tapez `bash` puis `Entrée`, vous ouvrez une session interactive qui affiche un avertissement de macOS. Tapez directement `./lancer.sh` pour éviter cela.*
+4. Répondez aux questions posées en console. Les PDF sont créés dans `feuilles_présence/`.
 
-1. Les dépendances sont déjà installées dans l'environnement virtuel `venv/`
+## Installation détaillée
+Les dépendances sont pré-installées dans le dossier `venv/`. Si vous devez repartir de zéro :
 
-2. Si vous devez réinstaller :
+### macOS / Linux
 ```bash
 python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-## Utilisation
+### Windows (PowerShell)
+```powershell
+py -m venv venv
+.\venv\Scripts\Activate.ps1
+pip install -r requirements.txt
+```
+> Pour réactiver ultérieurement l’environnement : `source venv/bin/activate` (macOS/Linux) ou `venv\Scripts\activate` (Windows).
 
-### Méthode 1 : Script de lancement (recommandé)
+## Utilisation
+### Script `lancer.sh` (recommandé)
+Automatise l’activation du virtualenv, l’installation des dépendances et l’exécution du générateur :
 ```bash
 ./lancer.sh
 ```
 
-### Méthode 2 : Manuelle
+### Mode manuel (sans script)
 ```bash
-source venv/bin/activate
+source venv/bin/activate          # ou venv\Scripts\activate sur Windows
 python generateur_feuilles.py
 ```
+Saisissez ensuite :
+1. Nom de la société cliente
+2. Liste des académiciens (séparés par des virgules)
+3. Durée de la formation
+4. Lieu de formation
+5. Nom de la formation
 
-### Utilisation avec Streamlit (interface web)
+### Interface web (Streamlit)
 ```bash
 source venv/bin/activate
 streamlit run streamlit_app.py
 ```
-Ouvrez ensuite le lien local affiché par Streamlit (généralement `http://localhost:8501`). Remplissez le formulaire :
-- Société cliente
-- Académiciens (séparés par des virgules)
-- Durée de la formation
-- Lieu de formation
-- Nom de la formation
+Ouvrez le lien local affiché (par défaut `http://localhost:8501`), remplissez le formulaire et cliquez sur **Générer les feuilles** puis **Télécharger le ZIP** pour récupérer toutes les feuilles.
 
-Cliquez sur « Générer les feuilles » puis « Télécharger le ZIP » pour obtenir l’archive contenant tous les PDF.
+## Résultat des feuilles PDF
+Chaque fichier suit la structure suivante :
+- En-tête : « Laurent-Serre-Développement »
+- Informations générales : société, académicien, durée, lieu, formation
+- Tableau de présence avec 16 lignes (8 demi-journées) et les colonnes : Date, Niveau, Durée (h), Horaires, Signature Stagiaire, Signature Formateur
 
-## Fonctionnement
+Les fichiers sont déposés dans le dossier `feuilles_présence/`.
 
-Le programme vous demandera :
-1. **Nom de la société cliente** : Le nom de l'entreprise
-2. **Nom des académiciens** : Les noms des stagiaires (séparés par des virgules)
-3. **Durée de la formation** : Par exemple "8 jours"
-4. **Lieu de formation** : L'adresse ou le lieu
-5. **Nom de la formation** : Le titre de la formation
+## Dépannage
+- **Permission denied sur `lancer.sh`** : exécutez `chmod +x lancer.sh`.
+- **Module introuvable (`reportlab`, `streamlit`)** : activez le virtualenv (`source venv/bin/activate`) puis `pip install -r requirements.txt`.
+- **PDF manquants** : vérifiez que le dossier `feuilles_présence/` existe et que les noms d’académiciens ne contiennent pas uniquement des espaces.
 
-Le programme générera automatiquement un PDF pour chaque académicien dans le dossier `feuilles_présence/`.
-
-## Structure du PDF généré
-
-Chaque feuille de présence contient :
-- En-tête avec le nom de l'entreprise (Laurent-Serre-Développement)
-- Informations sur la formation (société, académicien, durée, lieu, formation)
-- Tableau de présence avec 16 lignes (8 jours complets)
-- Colonnes : Date, Niveau, Durée, Horaires, Signature Stagiaire, Signature Formateur
-
-## Dossiers
-
-- `feuilles_présence/` : Contient tous les PDFs générés
-- `venv/` : Environnement virtuel Python (ignoré par git)
-
-## Dépendances
-
-- `reportlab` : Bibliothèque pour la génération de PDF
-- `streamlit` : Interface web simple pour formulaires et téléchargements
+## Structure du projet
+- `generateur_feuilles.py` : script principal en ligne de commande.
+- `streamlit_app.py` : interface web pour générer et télécharger un ZIP de feuilles.
+- `lancer.sh` : script d’aide pour lancer l’outil côté terminal.
+- `feuilles_présence/` : répertoire de sortie des PDF.
+- `venv/` : environnement virtuel Python prêt à l’emploi.
 
 ## Support
-
 Pour toute question ou problème, contactez Laurent Serre Développement.
-

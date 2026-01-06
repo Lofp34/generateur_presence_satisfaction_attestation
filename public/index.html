@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documents Formation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Sora:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --ink: #101216;
+        --muted: #4b5563;
+        --paper: #fef6ef;
+        --mist: #f3f7f3;
+        --glow: #ffd8b0;
+        --aqua: #b8efe6;
+        --accent: #f06c4a;
+        --accent-dark: #d95a3a;
+        --border: rgba(16, 18, 22, 0.12);
+        --shadow: 0 24px 60px rgba(16, 18, 22, 0.16);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: "Sora", sans-serif;
+        color: var(--ink);
+        background: radial-gradient(circle at top left, var(--glow), var(--paper) 45%, var(--mist));
+      }
+
+      .scene {
+        position: relative;
+        overflow: hidden;
+      }
+
+      .glow {
+        position: absolute;
+        width: 380px;
+        height: 380px;
+        border-radius: 50%;
+        filter: blur(30px);
+        opacity: 0.5;
+        pointer-events: none;
+      }
+
+      .glow.one {
+        background: var(--aqua);
+        top: -120px;
+        right: -120px;
+      }
+
+      .glow.two {
+        background: #ffd2c4;
+        bottom: -160px;
+        left: -120px;
+      }
+
+      header {
+        padding: 64px 10vw 24px;
+        display: grid;
+        gap: 20px;
+        position: relative;
+        z-index: 2;
+      }
+
+      .headline {
+        font-family: "DM Serif Display", serif;
+        font-size: clamp(2.4rem, 4vw, 3.6rem);
+        line-height: 1.05;
+      }
+
+      .subhead {
+        color: var(--muted);
+        font-size: 1.05rem;
+        max-width: 640px;
+      }
+
+      main {
+        padding: 0 10vw 80px;
+        position: relative;
+        z-index: 2;
+      }
+
+      .panel {
+        background: rgba(255, 255, 255, 0.9);
+        border: 1px solid var(--border);
+        border-radius: 28px;
+        box-shadow: var(--shadow);
+        padding: 32px;
+        display: grid;
+        gap: 28px;
+        backdrop-filter: blur(12px);
+      }
+
+      fieldset {
+        border: none;
+        padding: 0;
+        margin: 0;
+        display: grid;
+        gap: 18px;
+      }
+
+      legend {
+        font-family: "DM Serif Display", serif;
+        font-size: 1.2rem;
+        margin-bottom: 8px;
+      }
+
+      .grid-2 {
+        display: grid;
+        gap: 16px;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      }
+
+      label {
+        font-size: 0.85rem;
+        color: var(--muted);
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+
+      input,
+      textarea {
+        width: 100%;
+        padding: 12px 14px;
+        border-radius: 16px;
+        border: 1px solid rgba(16, 18, 22, 0.16);
+        font-size: 1rem;
+        font-family: inherit;
+        color: var(--ink);
+        background: #fffdf8;
+      }
+
+      textarea {
+        min-height: 120px;
+        resize: vertical;
+      }
+
+      .file {
+        border: 1px dashed rgba(16, 18, 22, 0.25);
+        border-radius: 16px;
+        padding: 16px;
+        background: rgba(255, 255, 255, 0.8);
+      }
+
+      .actions {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+
+      button {
+        background: var(--accent);
+        color: #fff;
+        border: none;
+        border-radius: 999px;
+        padding: 14px 28px;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+        box-shadow: 0 12px 24px rgba(240, 108, 74, 0.3);
+      }
+
+      button:hover {
+        background: var(--accent-dark);
+        transform: translateY(-2px);
+      }
+
+      .status {
+        font-size: 0.95rem;
+        color: var(--muted);
+      }
+
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 6px 12px;
+        border-radius: 999px;
+        border: 1px solid var(--border);
+        font-size: 0.85rem;
+      }
+
+      .fade-in {
+        opacity: 0;
+        transform: translateY(12px);
+        animation: reveal 0.8s ease forwards;
+      }
+
+      .fade-in.delay-1 {
+        animation-delay: 0.1s;
+      }
+
+      .fade-in.delay-2 {
+        animation-delay: 0.2s;
+      }
+
+      .fade-in.delay-3 {
+        animation-delay: 0.3s;
+      }
+
+      @keyframes reveal {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @media (max-width: 720px) {
+        header,
+        main {
+          padding: 48px 7vw 60px;
+        }
+
+        .panel {
+          padding: 24px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="scene">
+      <div class="glow one"></div>
+      <div class="glow two"></div>
+
+      <header>
+        <div class="badge fade-in">Documents formation</div>
+        <div class="headline fade-in delay-1">
+          Organisez vos feuilles, attestations et questionnaires en une seule
+          generation.
+        </div>
+        <div class="subhead fade-in delay-2">
+          Remplissez une fois, telechargez un ZIP unique. L interface est
+          epuree, fluide et pensee pour les equipes formation.
+        </div>
+      </header>
+
+      <main>
+        <form id="doc-form" class="panel fade-in delay-3">
+          <fieldset>
+            <legend>Informations formation</legend>
+            <div class="grid-2">
+              <div>
+                <label for="company">Societe cliente</label>
+                <input id="company" name="company" required />
+              </div>
+              <div>
+                <label for="training">Nom de la formation</label>
+                <input id="training" name="training" required />
+              </div>
+              <div>
+                <label for="duration">Duree</label>
+                <input id="duration" name="duration" required />
+              </div>
+              <div>
+                <label for="location">Lieu</label>
+                <input id="location" name="location" required />
+              </div>
+            </div>
+            <div>
+              <label for="dates">Dates de formation</label>
+              <textarea
+                id="dates"
+                name="dates"
+                placeholder="18/12/2025&#10;19/12/2025&#10;20/12/2025"
+                required
+              ></textarea>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Participants</legend>
+            <div>
+              <label for="participants">Noms des participants</label>
+              <textarea
+                id="participants"
+                name="participants"
+                placeholder="Alice Dupont&#10;Bob Martin"
+                required
+              ></textarea>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Attestation</legend>
+            <div class="grid-2">
+              <div>
+                <label for="provider">Organisme de formation</label>
+                <input id="provider" name="provider" value="Laurent-Serre-Developpement" />
+              </div>
+              <div>
+                <label for="signatory">Signataire</label>
+                <input id="signatory" name="signatory" value="Laurent Serre" />
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Logo questionnaire</legend>
+            <div class="file">
+              <label for="logo">Logo (optionnel)</label>
+              <input id="logo" name="logo" type="file" accept="image/*" />
+            </div>
+          </fieldset>
+
+          <div class="actions">
+            <button type="submit">Generer le ZIP</button>
+            <span class="status" id="status">Pret a generer.</span>
+          </div>
+        </form>
+      </main>
+    </div>
+
+    <script>
+      const form = document.getElementById("doc-form");
+      const statusEl = document.getElementById("status");
+
+      const setStatus = (text) => {
+        statusEl.textContent = text;
+      };
+
+      form.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        setStatus("Generation en cours...");
+
+        const formData = new FormData(form);
+        const payload = {
+          company: formData.get("company"),
+          training: formData.get("training"),
+          duration: formData.get("duration"),
+          location: formData.get("location"),
+          dates: formData.get("dates"),
+          participants: formData.get("participants"),
+          provider: formData.get("provider"),
+          signatory: formData.get("signatory"),
+        };
+
+        const request = new FormData();
+        request.append("data", JSON.stringify(payload));
+        const logo = formData.get("logo");
+        if (logo && logo.size) {
+          request.append("logo", logo);
+        }
+
+        try {
+          const response = await fetch("/api/generate", {
+            method: "POST",
+            body: request,
+          });
+
+          if (!response.ok) {
+            const errorText = await response.text();
+            throw new Error(errorText || "Erreur serveur");
+          }
+
+          const blob = await response.blob();
+          const disposition = response.headers.get("content-disposition") || "";
+          const filenameMatch = disposition.match(/filename="([^"]+)"/);
+          const filename = filenameMatch ? filenameMatch[1] : "documents_formation.zip";
+
+          const url = URL.createObjectURL(blob);
+          const link = document.createElement("a");
+          link.href = url;
+          link.download = filename;
+          document.body.appendChild(link);
+          link.click();
+          link.remove();
+          URL.revokeObjectURL(url);
+          setStatus("ZIP pret. Telechargement lance.");
+        } catch (error) {
+          setStatus(`Erreur: ${error.message}`);
+        }
+      });
+    </script>
+  </body>
+</html>

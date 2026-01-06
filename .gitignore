@@ -2,6 +2,7 @@
 venv/
 env/
 ENV/
+.venv/
 
 # Fichiers Python compilés
 __pycache__/
@@ -40,3 +41,11 @@ Thumbs.db
 
 # Sorties PDF
 feuilles_présence/
+generateur_questionnaire/questionnaires_satisfaction/
+attestations_formation/certificats_output/
+attestations_formation/attestation_*.pdf
+
+# Dossiers temporaires / cache
+.pytest_cache/
+attestations_formation/.venv/
+attestations_formation/tmp_*

@@ -1,2 +1,5 @@
 reportlab
 streamlit
+pydantic-settings
+pypdf
+pydantic

@@ -7,30 +7,43 @@ echo " Générateur de Feuilles de Présence"
 echo "=========================================="
 echo ""
 
-# Vérifier si l'environnement virtuel existe
-if [ ! -d "venv" ]; then
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+VENV_DIR="${SCRIPT_DIR}/venv"
+
+echo "🔧 Préparation de l'environnement virtuel..."
+
+# Vérifier que Python 3 est disponible
+if ! command -v python3 >/dev/null 2>&1; then
+    echo "❌ Python 3 est requis mais introuvable dans le PATH."
+    exit 1
+fi
+
+# Créer l'environnement virtuel s'il n'existe pas encore
+if [ ! -d "${VENV_DIR}" ]; then
     echo "⚠️  Environnement virtuel non trouvé. Création en cours..."
-    python3 -m venv venv
+    python3 -m venv "${VENV_DIR}"
     echo "✅ Environnement virtuel créé"
     echo ""
 fi
 
-# Activer l'environnement virtuel
-echo "🔧 Activation de l'environnement virtuel..."
-source venv/bin/activate
+PYTHON_BIN="${VENV_DIR}/bin/python3"
+if [ ! -x "${PYTHON_BIN}" ]; then
+    PYTHON_BIN="${VENV_DIR}/bin/python"
+fi
 
-# Installer/Mettre à jour les dépendances
+if [ ! -x "${PYTHON_BIN}" ]; then
+    echo "❌ Impossible de localiser l'interpréteur Python dans ${VENV_DIR}."
+    exit 1
+fi
+
+# Installer/Mettre à jour les dépendances avec le Python du venv
 echo "📦 Vérification des dépendances..."
-pip install -q -r requirements.txt
+"${PYTHON_BIN}" -m pip install -q -r "${SCRIPT_DIR}/requirements.txt"
 
 echo "✅ Prêt à générer les feuilles de présence"
 echo ""
 echo "=========================================="
 echo ""
 
-# Lancer le programme
-python generateur_feuilles.py
-
-# Désactiver l'environnement virtuel à la fin
-deactivate
-
+# Lancer le programme avec l'interpréteur du venv
+"${PYTHON_BIN}" "${SCRIPT_DIR}/generateur_feuilles.py"

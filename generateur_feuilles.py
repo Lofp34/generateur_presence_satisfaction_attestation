@@ -1,21 +1,35 @@
 
 import os
+from pathlib import Path
 from reportlab.lib import colors
 from reportlab.lib.pagesizes import A4
 from reportlab.lib.styles import getSampleStyleSheet
 from reportlab.lib.units import cm
-from reportlab.platypus import SimpleDocTemplate, Table, TableStyle, Paragraph, Spacer
+from reportlab.platypus import SimpleDocTemplate, Table, TableStyle, Paragraph, Spacer, Image
 
-def create_presence_sheet(societe, academicien, duree, lieu, formation):
+def create_presence_sheet(
+    societe,
+    academicien,
+    duree,
+    lieu,
+    formation,
+    dates=None,
+    output_dir="feuilles_présence",
+):
     """
     Génère une feuille de présence en PDF pour un académicien.
     """
-    output_dir = "feuilles_présence"
-    if not os.path.exists(output_dir):
-        os.makedirs(output_dir)
+    output_dir = Path(output_dir)
+    output_dir.mkdir(parents=True, exist_ok=True)
 
-    file_name = os.path.join(output_dir, f"Feuille_de_presence_{academicien.replace(' ', '_')}.pdf")
-    doc = SimpleDocTemplate(file_name, pagesize=A4, rightMargin=2*cm, leftMargin=2*cm, topMargin=2*cm, bottomMargin=2*cm)
+    # Préparation de la signature si elle existe
+    signature_path = Path(__file__).resolve().parent / "signature.png"
+    signature_img = None
+    if signature_path.exists():
+        signature_img = Image(str(signature_path), width=3.5*cm, height=1.2*cm)
+
+    file_name = output_dir / f"Feuille_de_presence_{academicien.replace(' ', '_')}.pdf"
+    doc = SimpleDocTemplate(str(file_name), pagesize=A4, rightMargin=2*cm, leftMargin=2*cm, topMargin=2*cm, bottomMargin=2*cm)
     
     story = []
     styles = getSampleStyleSheet()
@@ -56,14 +70,24 @@ def create_presence_sheet(societe, academicien, duree, lieu, formation):
 
 
     # Tableau de présence
-    table_header = ['Date', 'Niveau', 'Durée (h)', 'Horaires', 'Signature Stagiaire', 'Signature Formateur']
+    table_header = ['Date', 'Durée (h)', 'Horaires', 'Signature Stagiaire', 'Signature Formateur']
     
     table_data = [table_header]
-    for i in range(16): # 16 lignes pour 8 jours
-        horaire = "9h-13h00" if i % 2 == 0 else "14h-18h00"
-        table_data.append(['', '', '', horaire, '', ''])
+    
+    if dates:
+        for date in dates:
+            # Matin
+            table_data.append([date, '4h', "9h-13h00", '', signature_img or ''])
+            # Après-midi
+            table_data.append([date, '4h', "14h-18h00", '', signature_img or ''])
+    else:
+        for i in range(16): # 16 lignes par défaut
+            horaire = "9h-13h00" if i % 2 == 0 else "14h-18h00"
+            table_data.append(['', '4h', horaire, '', signature_img or ''])
 
-    presence_table = Table(table_data, colWidths=[2.5*cm, 2.5*cm, 2*cm, 2.5*cm, 4*cm, 4*cm], rowHeights=1.5*cm)
+    presence_table = Table(table_data, colWidths=[3*cm, 2*cm, 3*cm, 4.5*cm, 4.5*cm], rowHeights=1.5*cm)
+
+
     presence_table.setStyle(TableStyle([
         ('BACKGROUND', (0, 0), (-1, 0), colors.HexColor('#CCCCCC')),
         ('TEXTCOLOR', (0, 0), (-1, 0), colors.black),
@@ -91,15 +115,18 @@ def main():
     duree = input("Durée de la formation : ")
     lieu = input("Lieu de formation : ")
     formation = input("Nom de la formation : ")
+    dates_str = input("Dates de formation (séparées par une virgule, ex: 18/12/2025, 19/12/2025) : ")
     
     academiciens = [a.strip() for a in academiciens_str.split(',')]
+    dates = [d.strip() for d in dates_str.split(',') if d.strip()]
     
     for academicien in academiciens:
         print(f"Génération de la feuille de présence pour {academicien}...")
-        create_presence_sheet(societe, academicien, duree, lieu, formation)
+        create_presence_sheet(societe, academicien, duree, lieu, formation, dates)
 
     print("="*30)
     print("Toutes les feuilles de présence ont été générées.")
+
 
 if __name__ == "__main__":
     main()

@@ -1,0 +1,66 @@
+{
+  "template_pdf": "certificat_de_realisation_281225.pdf",
+  "image_width": 707,
+  "image_height": 1000,
+  "fields": [
+    {
+      "field_id": "signatory_name",
+      "bbox": [320, 268, 700, 287],
+      "font_size": 12
+    },
+    {
+      "field_id": "provider_name",
+      "bbox": [180, 315, 422, 349],
+      "font_size": 12
+    },
+    {
+      "field_id": "beneficiary_name",
+      "bbox": [330, 385, 700, 410],
+      "font_size": 12
+    },
+    {
+      "field_id": "company_name",
+      "bbox": [340, 412, 700, 430],
+      "font_size": 12
+    },
+    {
+      "field_id": "action_title",
+      "bbox": [220, 430, 620, 456],
+      "font_size": 12
+    },
+    {
+      "field_id": "checkbox_action_training",
+      "bbox": [94, 494, 112, 512],
+      "type": "checkbox",
+      "font_size": 12
+    },
+    {
+      "field_id": "date_start",
+      "bbox": [210, 575, 370, 600],
+      "font_size": 12,
+      "y_offset": 6
+    },
+    {
+      "field_id": "date_end",
+      "bbox": [360, 575, 500, 600],
+      "font_size": 12,
+      "y_offset": 6
+    },
+    {
+      "field_id": "duration",
+      "bbox": [210, 597, 335, 622],
+      "font_size": 12,
+      "y_offset": 6
+    },
+    {
+      "field_id": "location",
+      "bbox": [135, 758, 290, 774],
+      "font_size": 12
+    },
+    {
+      "field_id": "signature_date",
+      "bbox": [125, 780, 270, 795],
+      "font_size": 12
+    }
+  ]
+}
